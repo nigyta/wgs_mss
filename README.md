@@ -62,5 +62,56 @@ sequence01	assembly_gap	684943..685144	estimated_length	known
 
 ## 記載できるメタデータ
 BioSample IDや、生物種名、株名等の各ゲノムで異なるメタデータについては、FASTAファイルの一覧表に記載します。  
-メタデータの項目名は一覧表のヘッダー行に記載された値が使用されます。　　
-to be updated.
+メタデータの項目名は一覧表のヘッダー行に記載された値が使用されます。  
+__to be updated.__
+
+## 生成される登録ファイルの例
+五列のタブ区切り表形式ファイルが出力されます。(画面上ではずれて見えています)
+```
+COMMON	DIVISION		division	ENV
+	DATATYPE		type	WGS
+	KEYWORD		keyword	WGS
+			keyword	STANDARD_DRAFT
+			keyword	ENV
+			keyword	MAG
+			keyword	Metagenome Assembled Genome
+	DBLINK		project	PRJDB99999
+			biosample	SAMD999998
+			sequence_read_archive	DRR999998
+	SUBMITTER		ab_name	Tanizawa,Y.
+			ab_name	Doe,J.
+			ab_name	Smith,Y.
+			contact	Yasuhiro Tanizawa
+			email	dfast@ddbj.nig.ac.jp
+			phone	81-99-999-9999
+			institute	National Institute of Genetics
+			department	Bioscience and DDBJ Center
+			country	Japan
+			state	Shizuoka
+			city	Mishima
+			street	Yata 1111
+			zip	411-8540
+	REFERENCE		title	Genome analysis of XXXXX XXXXXX
+			ab_name	Tanizawa,T.
+			ab_name	Doe,J.
+			ab_name	Smith,Y.
+			status	Unpublished
+			year	2024
+	ST_COMMENT		tagset_id	Genome-Assembly-Data
+			Assembly Method	Megahit v. 1
+			Genome Coverage	120x
+			Sequencing Technology	Illumina NovaSeq
+	COMMENT		Data 2	Data 2
+			 Data 2, line2	Data 2, line2
+	DATE		date	20240626
+	source	1..E	mol_type	genomic DNA
+			organism	Clostridium zea
+			strain	CSC2
+			country	Japan
+			collection_date	20230422
+			submitter_seqid	@@[entry]@@
+			ff_definition	@@[entry]@@
+sequence01	assembly_gap	1906369..1906657	estimated_length	known
+			gap_type	within scaffold
+			linkage_evidence	paired-ends
+```
