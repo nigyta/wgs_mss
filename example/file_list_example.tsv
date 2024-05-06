@@ -1,0 +1,4 @@
+#file_path	project	biosample	sequence_read_archive	organism	strain	collection_date	country	Assembly Method	Assembly Name	Genome Coverage	Sequencing Technology	comment
+GCA_003307255.1.fna.gz	PRJDB99999	SAMD999997	DRR999997	Lactobacillus paragasseri	TO-1000	20230420	Japan	Skesa v. 1.1		100x	Illumina	Data 1
+GCA_017312485.1.fna.gz	PRJDB99999	SAMD999998	DRR999998	Clostridium zea	CSC2	20230422	Japan	Megahit v. 1		120x	Illumina NovaSeq	Data 2; Data 2, line2
+GCA_003851105.1.fna.gz	PRJDB99999	SAMD999999	DRR999999	Paenibacillus macerans	JAJ002	20240410	Japan	Skesa v1.2		130x	PacBio	Data 3
