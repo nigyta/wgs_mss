@@ -164,7 +164,7 @@ def make_source_feature(metadata, entry=""):
         if value:
             ret.append(["", "", "", qualifier, value])
     ret.append(["", "", "", "submitter_seqid", "@@[entry]@@"])
-    ret.append(["", "", "", "ff_definition", "@@[entry]@@"])
+    ret.append(["", "", "", "ff_definition", "@@[organism]@@ @@[strain]@@ DNA, draft genome: @@[entry]@@"])
     return ret
 
 def make_common_entry(template, metadata, category="draft_genome"):

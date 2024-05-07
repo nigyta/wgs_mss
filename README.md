@@ -111,7 +111,7 @@ COMMON	DIVISION		division	ENV
 			country	Japan
 			collection_date	20230422
 			submitter_seqid	@@[entry]@@
-			ff_definition	@@[entry]@@
+			ff_definition	@@[organism]@@ @@[strain]@@ DNA, draft genome: @@[entry]@@
 sequence01	assembly_gap	1906369..1906657	estimated_length	known
 			gap_type	within scaffold
 			linkage_evidence	paired-ends
