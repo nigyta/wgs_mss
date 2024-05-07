@@ -26,7 +26,7 @@ parser = argparse.ArgumentParser(description='Convert FASTA file to MSS format f
 parser.add_argument('-f', '--fasta_list', help='Tab-separated table containing the list for the path to FASTA file and metaadata')
 parser.add_argument('-m', '--metadata_file', help='Common metadata file (for submitter and reference)')
 parser.add_argument('-o', '--outdir', help='Output Directory')
-parser.add_argument('-c', '--category', choices=["draft_genome", "draft_mag", "complete_genome", "complete_mag"], 
+parser.add_argument('-c', '--category', choices=["draft_genome", "draft_mag"], 
                     help='Submission category (default: draft_genome)', default='draft_genome')
 parser.add_argument('-H', '--hold_date', help='Hold date for the submission, format="yyyymmdd"')
 parser.add_argument('-r', '--rename_sequence', action="store_true",help='Rename sequence ID. If set, the sequence ID will be renamed as sequence01, sequence02, ... (default: False)')

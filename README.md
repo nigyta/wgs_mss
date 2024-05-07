@@ -1,8 +1,9 @@
 # MSSmaker
 多数のゲノム塩基配列を一括で DDBJ の登録形式に変換するスクリプトです。生成した登録形式ファイルは DDBJ MSS (Mass Submission System, 大量登録システム) を使って登録することができます。  
 タブ区切り表形式ファイル (tsvファイル) の各行にゲノム塩基配列の FASTA 形式ファイルへのパスおよび各ゲノムについてのメタデータ (生物種名、他) を記載して、MSS 形式ファイルへの変換を行います。  
-塩基配列中にギャップ (NNN...) が存在する場合、`assebmly_gap` フィーチャーとして記載されます。その際に、`gap_type` や `linkage_evidence` の値については、全て同一の値が記載されます ([後述](#assembly_gap-の記載について))  
+塩基配列中にギャップ (NNN...) が存在する場合、`assebmly_gap` フィーチャーとして記載されます。その際に、`gap_type` や `linkage_evidence` の値については、全て同一の値が記載されます ([後述](#assembly_gap-の記載について))。  
 `CDS` などの biological feature の記載 (アノテーションの記述) はできません。本スクリプトはアノテーションなしでゲノム塩基配列情報のみを DDBJ に登録するためのものです。アノテーションされた原核生物ゲノムの登録には DFAST をご使用ください ([web](https://dfast.ddbj.nig.ac.jp), [github](https://github.com/nigyta/dfast_core))。
+completeゲノムの登録には対応していません (真核生物の場合には染色体名の指定、原核生物の場合には染色体/plasmidの指定を配列ごとに行う必要があるため)。
 
 ## 入力ファイル
 - FASTAファイルへのパスを含んだタブ区切り表形式ファイル  
@@ -41,7 +42,7 @@ cd example
 ../MSSmaker.py -f file_list_example.tsv -m metadata_wgs_example.tsv -o ./ --category draft_mag --hold_date 20250506 --rename_sequence
 ```
 
-- `-c` or `--category` で登録するデータのカテゴリを {draft_genome,draft_mag,complete_genome,complete_mag} の中から選んで指定する (**必須**)。指定したカテゴリに応じて登録ファイルに記載する DATATYPE や KEYWORD 等が決まる。  
+- `-c` or `--category` で登録するデータのカテゴリを {draft_genome,draft_mag} の中から選んで指定する (__必須__)。指定したカテゴリに応じて登録ファイルに記載する DATATYPE や KEYWORD 等が決まる。  
 - `-o` or `--outdir` で出力ファイルの生成先ディレクトリを指定  
 - `-H` or `--hold_date` でデータの公開予定日(hold_date)を年月日の順で、半角数字８桁(例：20250506)で指定。登録完了後に即時公開を希望する場合、指定不要  
 - `-ｒ` or `--rename_sequence` を指定すると、配列名を`sequence01`、`sequence02` ... という名称に変更して登録する。指定しない場合、FASTAファイル中に記載された配列ID (ヘッダ行の最初のスペースまで)が配列名として使われる。配列名はデータ公開ファイルのDEFINITION行と source フィーチャー (配列の由来についての記載項目) に `submitter_seqid` として記載される。  
