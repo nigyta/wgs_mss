@@ -232,6 +232,7 @@ def create_mss_files(fasta_file, template_file, metadata, out_dir, category="dra
     for i, r in enumerate(R, 1):
         # print(r.id, len(r.seq))
         r.name, r.description = "", ""
+        r.seq = r.seq.lower()
         if rename_sequence:
             
             r.id = f"sequence{str(i).zfill(seq_width)}"

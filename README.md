@@ -38,7 +38,7 @@ cd example
 ./prepare_test_data.sh
 
 # 実行
-python ../MSSmaker.py -f file_list_example.tsv -m metadata_wgs_example.tsv -o ./ --category draft_mag --hold_date 20250506 --rename_sequence
+../MSSmaker.py -f file_list_example.tsv -m metadata_wgs_example.tsv -o ./ --category draft_mag --hold_date 20250506 --rename_sequence
 ```
 
 - `-c` or `--category` で登録するデータのカテゴリを {draft_genome,draft_mag,complete_genome,complete_mag} の中から選んで指定する (**必須**)。指定したカテゴリに応じて登録ファイルに記載する DATATYPE や KEYWORD 等が決まる。  
