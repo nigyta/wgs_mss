@@ -1,8 +1,8 @@
 # MSSmaker
-多数のゲノム塩基配列を DDBJ MSS (Mass Submission System, 大量登録システム) を使って登録するためのファイル変換を行うスクリプト。  
+多数のゲノム塩基配列を一括で DDBJ の登録形式に変換するスクリプトです。生成した登録形式ファイルは DDBJ MSS (Mass Submission System, 大量登録システム) を使って登録することができます。  
 タブ区切り表形式ファイル (tsvファイル) の各行にゲノム塩基配列の FASTA 形式ファイルへのパスおよび各ゲノムについてのメタデータ (生物種名、他) を記載して、MSS 形式ファイルへの変換を行います。  
-塩基配列中にギャップ (NNN...) が存在する場合、`assebmly_gap` フィーチャーとして記載されます。その際に、`gap_type` や `linkage_evidence` の値については、全て同一の値が記載されます ([後述](#assembly_gap-の記載について))
-
+塩基配列中にギャップ (NNN...) が存在する場合、`assebmly_gap` フィーチャーとして記載されます。その際に、`gap_type` や `linkage_evidence` の値については、全て同一の値が記載されます ([後述](#assembly_gap-の記載について))  
+`CDS` などの biological feature の記載 (アノテーションの記述) はできません。本スクリプトはアノテーションなしでゲノム塩基配列情報のみを DDBJ に登録するためのものです。アノテーションされた原核生物ゲノムの登録には DFAST をご使用ください ([web](https://dfast.ddbj.nig.ac.jp), [github](https://github.com/nigyta/dfast_core))。
 
 ## 入力ファイル
 - FASTAファイルへのパスを含んだタブ区切り表形式ファイル  
@@ -66,7 +66,7 @@ BioSample IDや、生物種名、株名等の各ゲノムで異なるメタデ�
 __to be updated.__
 
 ## 生成される登録ファイルの例
-五列のタブ区切り表形式ファイルが出力されます。(画面上ではずれて見えています)
+五列のタブ区切り表形式ファイルが出力されます。(画面上ではずれて見える場合があります)
 ```
 COMMON	DIVISION		division	ENV
 	DATATYPE		type	WGS
