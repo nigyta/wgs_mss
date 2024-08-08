@@ -1,6 +1,8 @@
 example/GCA*
 example/SAMD*
-
+~$*
+OUT
+.vscode
 .DS_store
 
 # Byte-compiled / optimized / DLL files

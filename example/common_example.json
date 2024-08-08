@@ -1,0 +1,35 @@
+{
+    "SUBMITTER": {
+        "ab_name": [
+            "Tanizawa,Y.",
+            "Fujisawa,T.",
+            "Ohishi,N."
+        ],
+        "contact": "Yasuhiro Tanizawa",
+        "email": "xxx@ddbj.nig.ac.jp",
+        "phone": "000-000-000-000",
+        "institute": "National Institute of Genetics",
+        "country": "Japan",
+        "city": "Mishima",
+        "street": "Yata 1111",
+        "zip": "411-8540",
+        "consrtm": "Dogrun Inc.",
+        "department": "DDBJ",
+        "state": "Shizuoka"
+    },
+    "REFERENCE": [
+        {
+            "ab_name": [
+                "Tanizawa,Y.",
+                "Fujisawa,T."
+            ],
+            "status": "Published",
+            "year": 2024,
+            "title": "Draft genome sequencing of XXX",
+            "journal": "Nature",
+            "volume": "10",
+            "start_page": "100",
+            "end_page": "200"
+        }
+    ]
+}

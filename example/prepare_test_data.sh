@@ -1,4 +1,8 @@
 #!/bin/sh
-curl ftp.ncbi.nlm.nih.gov/genomes/all/GCA/003/851/105/GCA_003851105.1_ASM385110v1/GCA_003851105.1_ASM385110v1_genomic.fna.gz > GCA_003851105.1.fna.gz
-curl ftp.ncbi.nlm.nih.gov/genomes/all/GCA/017/312/485/GCA_017312485.1_ASM1731248v1/GCA_017312485.1_ASM1731248v1_genomic.fna.gz > GCA_017312485.1.fna.gz
-curl ftp.ncbi.nlm.nih.gov/genomes/all/GCA/003/307/255/GCA_003307255.1_ASM330725v1/GCA_003307255.1_ASM330725v1_genomic.fna.gz > GCA_003307255.1.fna.gz
+curl ftp.ncbi.nlm.nih.gov/genomes/all/GCA/003/851/105/GCA_003851105.1_ASM385110v1/GCA_003851105.1_ASM385110v1_genomic.fna.gz > example/GCA_003851105.1.fna.gz
+curl ftp.ncbi.nlm.nih.gov/genomes/all/GCA/017/312/485/GCA_017312485.1_ASM1731248v1/GCA_017312485.1_ASM1731248v1_genomic.fna.gz > example/GCA_017312485.1.fna.gz
+curl ftp.ncbi.nlm.nih.gov/genomes/all/GCA/003/307/255/GCA_003307255.1_ASM330725v1/GCA_003307255.1_ASM330725v1_genomic.fna.gz > example/GCA_003307255.1.fna.gz
+curl ftp.ncbi.nlm.nih.gov/genomes/all/GCA/040/039/785/GCA_040039785.1_ASM4003978v1/GCA_040039785.1_ASM4003978v1_genomic.fna.gz > example/GCA_040039785.1.fna.gz
+curl ftp.ncbi.nlm.nih.gov/genomes/all/GCA/024/349/705/GCA_024349705.1_Buchnera_aphidicola_Ceratovacuna_japonica_strain_CjNOSY1_v._1.0/GCA_024349705.1_Buchnera_aphidicola_Ceratovacuna_japonica_strain_CjNOSY1_v._1.0_genomic.fna.gz > example/GCA_024349705.1.fna.gz
+curl ftp.ncbi.nlm.nih.gov/genomes/all/GCA/024/349/745/GCA_024349745.1_Candidatus_Hamiltonella_defensa_Ceratovacuna_japonica_strain_CjNOSY1_v._1.0/GCA_024349745.1_Candidatus_Hamiltonella_defensa_Ceratovacuna_japonica_strain_CjNOSY1_v._1.0_genomic.fna.gz > example/GCA_024349745.1.fna.gz
+curl ftp.ncbi.nlm.nih.gov/genomes/all/GCA/024/349/725/GCA_024349725.1_Arsenophonus_sp._Ceratovacuna_japonica_strain_CjNOSY1_v._1.0/GCA_024349725.1_Arsenophonus_sp._Ceratovacuna_japonica_strain_CjNOSY1_v._1.0_genomic.fna.gz > example/GCA_024349725.1.fna.gz
