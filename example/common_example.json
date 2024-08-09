@@ -1,11 +1,10 @@
 {
     "SUBMITTER": {
         "ab_name": [
-            "Tanizawa,Y.",
-            "Fujisawa,T.",
-            "Ohishi,N."
+            "Suzuki,K.",
+            "Doe,J."
         ],
-        "contact": "Yasuhiro Tanizawa",
+        "contact": "Jane Doe",
         "email": "xxx@ddbj.nig.ac.jp",
         "phone": "000-000-000-000",
         "institute": "National Institute of Genetics",
@@ -13,15 +12,15 @@
         "city": "Mishima",
         "street": "Yata 1111",
         "zip": "411-8540",
-        "consrtm": "Dogrun Inc.",
         "department": "DDBJ",
         "state": "Shizuoka"
     },
     "REFERENCE": [
         {
             "ab_name": [
-                "Tanizawa,Y.",
-                "Fujisawa,T."
+                "Suzuki,K.",
+                "Smith,J.",
+                "Doe,J."
             ],
             "status": "Published",
             "year": 2024,
