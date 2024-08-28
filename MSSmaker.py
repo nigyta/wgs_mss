@@ -6,8 +6,6 @@ import math
 import gzip
 import logging
 import argparse
-from Bio import SeqIO
-import pandas as pd
 from src.main_mss_maker import create_mss
 from src.gap_annotator import GapAnnotator
 from src.schema_util import load_json_file, get_remote_schema, get_local_schema
@@ -59,6 +57,9 @@ if len(sys.argv) == 1:
     sys.exit(1)
 
 args = parser.parse_args()
+
+from Bio import SeqIO
+import pandas as pd
 
 gap_annotator = GapAnnotator.initialize(parser.parse_args())
 

@@ -25,7 +25,10 @@ def initialize_json_data_and_schema(base_json_data, base_schema, _trad_submissio
 
 def row_to_dict(row: pd.Series, base_json_data: dict, base_schema: dict) -> tuple[str, str, dict, dict, dict, dict]:
     """
-    Create JSON files from the row data in the Excel file.
+    Create dictionary from the row data in the Excel file.
+    エクセル/TSVファイルの各行データから辞書を作成する
+
+    対象ファイルのパス、登録カテゴリ、デフォルト値で補完されたjsonデータ、配列情報データ、ソース情報データ、simplifiedされたスキーマを返す
     """
 
     def str2array(value: str) -> list[str]:
@@ -69,8 +72,10 @@ def row_to_dict(row: pd.Series, base_json_data: dict, base_schema: dict) -> tupl
 
 
 def create_mss(S: pd.Series, base_json_data: dict, base_schema: dict, out_dir: str, gap_annotator: GapAnnotator|None=None, hold_date: str|None=None) -> list[list[str]]:
+
     file_path, _trad_submission_category, json_data, dict_sequence, dict_source, schema = row_to_dict(S, base_json_data, base_schema)
 
+    print(f"Creating MSS submission files for {_trad_submission_category} from {file_path}")
     annot = create_common(json_data)  # COMMON Feature (list of 5-element lists)
     if hold_date:
         annot.append(["", "DATE", "", "hold_date", hold_date])
@@ -125,5 +130,6 @@ def output(out_dir, prefix, annot, seq_records):
             f.write("\t".join(map(str, row)) + "\n")
     with open(out_seq, "w") as f:
         for seq_record in seq_records:
+            seq_record.seq = seq_record.seq.lower().strip("/")
             f.write(seq_record.format("fasta"))
             f.write("//\n")

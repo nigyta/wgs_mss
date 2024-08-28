@@ -67,6 +67,10 @@ def validate_json(json_data, schema):
 
 
 def get_subschema_for_category(schema, category):
+    """
+    create json schema for the given category
+    登録カテゴリの値に応じてjson schemaの余分な条件分岐を削除して簡潔にする
+    """
     def _check_category(subschema):
         return category == subschema.get("if", {}).get("properties", {}).get("_trad_submission_category", {}).get("const", "")
     subschemas = [subschema for subschema in schema.get("allOf", []) if _check_category(subschema)]
@@ -81,7 +85,8 @@ def get_subschema_for_category(schema, category):
 
 
 def set_default_validator(validator_class):
-    # デフォルの値を設定する
+    # json schema のデフォルの値を設定する
+    # see: https://stackoverflow.com/questions/41290777/trying-to-make-json-schema-validator-in-python-to-set-default-values
     validate_properties = validator_class.VALIDATORS["properties"]
 
     def set_defaults(validator, properties, instance, schema):

@@ -9,11 +9,19 @@ def create_qualifier(qualifier_key: str, value: str|list) -> list[list[str]]:
         ret.append(["", "", "", qualifier_key, value])
     return ret
 
+
+def sort_st_comment(qualifier_keys: list[str]) -> list[str]:
+    return [k for k in qualifier_keys if k == "tagset_id"] + sorted([k for k in qualifier_keys if k != "tagset_id"])
+
 def create_feature(feature_name: str, feature_values: dict|list) -> list[list[str]]:
     ret = []
     if isinstance(feature_values, list):  # For array data (REFERENCE and COMMENT)
         for v in feature_values:
             ret.extend(create_feature(feature_name, v))
+    elif feature_name == "ST_COMMENT":  # qualifier must be sorted in alphabetical order
+        qualifier_keys = sort_st_comment(feature_values.keys())
+        for qualifier_key in qualifier_keys:
+            ret.extend(create_qualifier(qualifier_key, feature_values[qualifier_key]))
     else:
         for qualifier_key, value in feature_values.items():
             ret.extend(create_qualifier(qualifier_key, value))

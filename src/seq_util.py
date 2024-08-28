@@ -79,7 +79,7 @@ def create_source_feature(_trad_submission_category, seq_name, seq_type, seq_top
         elif seq_type in ["n", "nearly complete", "nearly-complete"]:
             ff_definition = "@@[organism]@@ @@[strain]@@ DNA, nearly complete genome"
         elif seq_type in ["p", "plasmid"]:
-            ff_definition = "@@[organism]@@ @@[strain]@@ plasmid @@[plasmid]@@ DNA, complete genome"
+            ff_definition = "@@[organism]@@ @@[strain]@@ plasmid @@[plasmid]@@ DNA, complete sequence"
             plasmid = True
         else:
             submitter_seqid = "@@[entry]@@"
@@ -92,7 +92,7 @@ def create_source_feature(_trad_submission_category, seq_name, seq_type, seq_top
         elif seq_type in ["n", "nearly complete", "nearly-complete"]:
             ff_definition = "@@[organism]@@ @@[isolate]@@ DNA, nearly complete genome"
         elif seq_type in ["p", "plasmid"]:
-            ff_definition = "@@[organism]@@ @@[isolate]@@ plasmid @@[plasmid]@@ DNA, complete genome"
+            ff_definition = "@@[organism]@@ @@[isolate]@@ plasmid @@[plasmid]@@ DNA, complete sequence"
             plasmid = True
         else:
             submitter_seqid = "@@[entry]@@"

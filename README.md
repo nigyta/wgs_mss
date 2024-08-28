@@ -8,7 +8,7 @@ completeゲノムの登録には対応していません (真核生物の場合�
 ## 入力ファイル (必須)
 - FASTAファイルへのパスを含んだエクセルファイル (xlsx) またはタブ区切り表形式ファイル (tsv)  
     エクセルファイルの場合`--excel`、tsvファイルの場合 `--tsv`で指定。エクセルファイルを指定した場合、`--sheet` で読み込むワークシートを指定できる (デフォルトは "Sheet1")  
-	Excelファイルではすべてのセルが文字列として記載されるように注意してください。数値や日付データとして記載されていた場合、正しく処理がされない可能性があります。そのため、tsv形式のファイルを指定することを推奨します。　　
+	Excelファイルではすべてのセルが文字列として記載されるように注意してください。数値や日付データとして記載されていた場合、正しく処理がされない可能性があります。そのため、tsv形式のファイルを指定することを推奨します。  
     1, 2行目はヘッダー。各行の一列目にはFASTAファイルへのパス (絶対パスまたはスクリプトを実行するディレクトリからの相対パス) を記載、二列目には登録区分を記載、3行目に各サンプル固有のメタデータを記載する。  
     記載できるメタデータについては[後述](#記載できるメタデータ)  
     例) [example/sample_list.xlsx](example/sample_list.xlsx), [example/sample_list_WGS.tsv](example/sample_list_WGS.tsv), [example/sample_list_MAG.tsv](example/sample_list_MAG.tsv)  
@@ -18,6 +18,15 @@ completeゲノムの登録には対応していません (真核生物の場合�
     全データに共通するメタデータを記載 (submitter や reference 情報など)  
     ファイルの形式はMSS登録形式ファイル (タブ区切りの５列の表形式ファイル) の内容を JSON 形式で記述したもの。記載形式や記述できる内容についてはMSS登録ファイルの作成マニュアル ([submitter](https://www.ddbj.nig.ac.jp/ddbj/file-format.html#submitter)、[reference](https://www.ddbj.nig.ac.jp/ddbj/file-format.html#reference)) を参考。  
     例) [example/common_example.json](example/common_example.json)
+
+## 登録カテゴリについて
+登録カテゴリは Excel/TSV ファイル中の `_trad_submission_category` で指定します。  
+- ドラフトゲノム: WGS
+- コンプリートゲノム (染色体およびプラスミド配列を含む): GNM
+- ドラフトMAG (metagenome-assembled genome): WGS-MAG
+- コンプリートMAG: MAG
+- トランスクリプトームアセンブリ: TSA
+GNM および MAG を指定した場合、配列名、配列種別、配列トポロジーを指定する必要があります。[後述: complete genome を登録する場合 (GNM, MAG)]
 
 ## オプション
 - `-o` または `--out_dir`: 結果ファイルの出力先ディレクトリを指定。デフォルトはカレントディレクトリ  
@@ -52,6 +61,7 @@ cd wgs_mss
 ./MSSmaker.py --excel example/sample_list.xlsx --sheet MAG -m example/common_example.json -o OUT -H 20260501
 
 ```
+`-o` で出力先ディレクトリ、`-H` で公開予定日を指定できます。
 
 ## assembly_gap の記載について
 このスクリプトでは10塩基分以上の `N` が続いた領域をギャップとみなして `assembly_gap` フィーチャーを記載します。ギャップとみなす最小の塩基数は、`--min_gap_length` で指定可能ですが、特に理由がない限りこの値を変更しないでください。  
@@ -73,9 +83,27 @@ sequence01	assembly_gap	684943..685144	estimated_length	known
 			linkage_evidence	paired-ends
 ```
 
+## complete genome を登録する場合 (GNM, MAG)
+配列名、配列種別、配列トポロジーを指定する必要があります。
+- 配列名  
+	`seq_names` 列で指定。染色体名やプラスミド名を指定します。FASTAファイルに複数の配列が含まれる場合、カンマで区切って配列の数と同じだけ記載してください。  
+	例: `chromosome,pXXX1,pXXX2`、`chromosome`
+- 配列種別  
+	`seq_types` 列で指定。染色が染色体由来かプラスミド由来かを指定します。FASTAファイルに複数の配列が含まれる場合、カンマで区切って配列の数と同じだけ記載してください。  
+	コンプリートレベルの染色体配列の場合 `c` (complete)、コンプリートに近いレベルの場合 `n` (nearly complete)、プラスミド配列の場合 `p` (plasmid)  
+	例: `c,p,p`、`n`
+- 配列トポロジー  
+	`seq_topologies` 列で指定。配列の形状 (linear or circular) を指定してください。FASTAファイルに複数の配列が含まれる場合、カンマで区切って配列の数と同じだけ記載してください。  
+	例: `c,c,l`, `c`
+
+
 ## 記載できるメタデータ
 ゲノム塩基配列の場合、BioProject、BioSample IDは必須です。また、MAGの場合、SRAのリードアクセッションも必要となります。記載できるメタデータの代表的な例はサンプルファイルをご参照ください。  
 配列の生物的由来を示す情報 (__source__フィーチャー)については任意の項目を付け足すことが可能です。その場合にはサンプルシートのヘッダー１行目には `source`、２行目には属性 (qualifier)名を記載してください。sourceフィーチャーに使用できるqualifierについてはこちらの[対応表](https://docs.google.com/spreadsheets/d/1qosakEKo-y9JjwUO_OFcmGCUfssxhbFAm5NXUAnT3eM/edit?gid=0#gid=0)をご参照ください。　　
+
+## 公開予定日
+公開予定日を指定したい場合 `-H` あるいは `--hold_date` を指定して実行してください。指定しない場合、登録後即時公開されます。  
+例) `--hold_date 20261231`
 
 ## 生成される登録ファイルの例
 五列のタブ区切り表形式ファイルが出力されます。(画面上ではずれて見える場合があります)
